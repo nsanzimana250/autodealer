@@ -3,6 +3,8 @@ import suv1 from '@/assets/suv-1.jpg';
 import sports1 from '@/assets/sports-1.jpg';
 
 export interface Car {
+  model: any;
+  isNew: unknown;
   id: string;
   name: string;
   brand: string;

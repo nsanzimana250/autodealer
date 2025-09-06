@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
 import { Heart, Eye, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -16,6 +17,10 @@ interface CarCardProps {
   transmission: string;
   condition: 'new' | 'used';
   featured?: boolean;
+  viewMode?: 'grid' | 'list';
+  className?: string;
+  isLiked: boolean;
+  onLikeToggle: () => void;
 }
 
 const CarCard = ({ 
@@ -29,9 +34,13 @@ const CarCard = ({
   fuelType, 
   transmission, 
   condition, 
-  featured = false 
+  featured = false,
+  viewMode = 'grid',
+  className,
+  isLiked,
+  onLikeToggle,
 }: CarCardProps) => {
-  const [isLiked, setIsLiked] = useState(false);
+  const isList = viewMode === 'list';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -43,11 +52,11 @@ const CarCard = ({
   const handleToggleLike = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsLiked(!isLiked);
+    onLikeToggle();
   };
 
   return (
-    <div className="card-automotive group overflow-hidden relative">
+    <div className={cn("card-automotive group overflow-hidden relative", className)}>
       {featured && (
         <div className="absolute top-4 left-4 z-10">
           <Badge className="bg-accent text-accent-foreground font-semibold">
@@ -67,8 +76,11 @@ const CarCard = ({
         </Button>
       </div>
 
-      <Link to={`/cars/${id}`} className="block">
-        <div className="aspect-[4/3] overflow-hidden">
+      <Link to={`/cars/${id}`} className={cn("block", isList && "flex")}>
+        <div className={cn(
+          "overflow-hidden",
+          isList ? "w-1/3 flex-shrink-0" : "aspect-[4/3]"
+        )}>
           <img
             src={image}
             alt={`${brand} ${name}`}
@@ -76,7 +88,7 @@ const CarCard = ({
           />
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className={cn("space-y-4", isList ? "p-4 flex-1" : "p-6")}>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Badge variant={condition === 'new' ? 'default' : 'secondary'}>
