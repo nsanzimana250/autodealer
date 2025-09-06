@@ -26,8 +26,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'red' }}>
-      <h1 style={{ color: 'black', fontSize: '50px', padding: '20px' }}>TEST - Home Component Loading</h1>
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="hero-section relative min-h-screen flex items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0">
