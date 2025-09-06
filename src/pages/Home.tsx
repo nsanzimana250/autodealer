@@ -9,11 +9,15 @@ import { carsData, categories, brands } from '@/data/cars';
 import heroImage from '@/assets/hero-car.jpg';
 
 const Home = () => {
+  console.log('Home component rendering');
+  console.log('heroImage:', heroImage);
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
 
   const featuredCars = carsData.filter(car => car.featured).slice(0, 3);
+  console.log('featuredCars:', featuredCars);
 
   const stats = [
     { icon: Star, label: 'Customer Rating', value: '4.9/5' },
@@ -22,7 +26,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ backgroundColor: 'red' }}>
+      <h1 style={{ color: 'black', fontSize: '50px', padding: '20px' }}>TEST - Home Component Loading</h1>
       {/* Hero Section */}
       <section className="hero-section relative min-h-screen flex items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0">
