@@ -7,12 +7,14 @@ import {
   Settings, 
   Users,
   BarChart3,
+  Car,
   ChevronLeft,
   LogOut
 } from 'lucide-react';
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
+  { icon: Car, label: 'Cars', path: '/admin/cars' },
   { icon: FileText, label: 'Content', path: '/admin/content' },
   { icon: Users, label: 'Users', path: '/admin/users' },
   { icon: BarChart3, label: 'Analytics', path: '/admin/analytics' },

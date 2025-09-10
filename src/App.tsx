@@ -17,6 +17,7 @@ import Checkout from "./pages/Checkout";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
+import CarManagement from "./pages/admin/CarManagement";
 import ContentManagement from "./pages/admin/ContentManagement";
 import Settings from "./pages/admin/Settings";
 
@@ -37,6 +38,7 @@ const App = () => (
             </ProtectedRoute>
           }>
             <Route index element={<Dashboard />} />
+            <Route path="cars" element={<CarManagement />} />
             <Route path="content" element={<ContentManagement />} />
             <Route path="settings" element={<Settings />} />
           </Route>
