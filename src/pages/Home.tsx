@@ -28,7 +28,7 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const featuredCars = carsData.filter(car => car.featured).slice(0, 6);
-  const newArrivals = carsData.filter(car => car.isNew).slice(0, 3);
+  const newArrivals = carsData.filter(car => car.condition === 'new').slice(0, 3);
   const electricCars = carsData.filter(car => car.category === 'Electric').slice(0, 3);
 
   const stats = [

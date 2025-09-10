@@ -27,8 +27,7 @@ const CarListings = () => {
   const filteredCars = useMemo(() => {
     let filtered = carsData.filter(car => {
       const matchesSearch = car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           car.model?.toLowerCase().includes(searchTerm.toLowerCase());
+                           car.brand.toLowerCase().includes(searchTerm.toLowerCase());
       
       const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(car.brand);
       const matchesPrice = car.price >= priceRange[0] && car.price <= priceRange[1];
@@ -334,6 +333,8 @@ const CarListings = () => {
                       {...car} 
                       viewMode={viewMode}
                       className={viewMode === 'list' ? 'flex-row h-64' : ''}
+                      isLiked={false}
+                      onLikeToggle={() => {}}
                     />
                   </motion.div>
                 ))}

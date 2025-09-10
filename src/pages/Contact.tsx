@@ -452,7 +452,7 @@ const Contact = () => {
       </div>
 
       {/* Add these CSS animations to your global styles */}
-      <style jsx>{`
+      <style>{`
         @keyframes fadeInDown {
           from {
             opacity: 0;
