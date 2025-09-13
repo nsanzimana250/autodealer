@@ -19,7 +19,11 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import CarManagement from "./pages/admin/CarManagement";
 import ContentManagement from "./pages/admin/ContentManagement";
+import ServiceManagement from "./pages/admin/ServiceManagement";
+import AdminContact from "./pages/admin/AdminContact";
+import AdminCheckout from "./pages/admin/AdminCheckout";
 import Settings from "./pages/admin/Settings";
+import ServiceDetails from "./pages/ServiceDetails";
 
 const queryClient = new QueryClient();
 
@@ -39,7 +43,10 @@ const App = () => (
           }>
             <Route index element={<Dashboard />} />
             <Route path="cars" element={<CarManagement />} />
+            <Route path="services" element={<ServiceManagement />} />
             <Route path="content" element={<ContentManagement />} />
+            <Route path="contact" element={<AdminContact />} />
+            <Route path="checkout" element={<AdminCheckout />} />
             <Route path="settings" element={<Settings />} />
           </Route>
 
@@ -52,6 +59,7 @@ const App = () => (
                   <Route path="/" element={<Home />} />
                   <Route path="/cars" element={<CarListings />} />
                   <Route path="/cars/:id" element={<CarDetails />} />
+                  <Route path="/services/:id" element={<ServiceDetails />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/cart" element={<Cart />} />
