@@ -33,8 +33,8 @@ const ServiceManagement = () => {
   const filteredServices = servicesData.filter(service => {
     return (
       service.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedCategory === '' || service.category === selectedCategory) &&
-      (selectedStatus === '' || service.status === selectedStatus)
+      (selectedCategory === 'all' || selectedCategory === '' || service.category === selectedCategory) &&
+      (selectedStatus === 'all' || selectedStatus === '' || service.status === selectedStatus)
     );
   });
 
@@ -318,7 +318,7 @@ const ServiceManagement = () => {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 {serviceCategories.map(category => (
                   <SelectItem key={category} value={category} className="capitalize">
                     {category}
@@ -331,7 +331,7 @@ const ServiceManagement = () => {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Status</SelectItem>
+                <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="active">Active</SelectItem>
                 <SelectItem value="inactive">Inactive</SelectItem>
               </SelectContent>
