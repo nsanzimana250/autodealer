@@ -123,7 +123,7 @@ const AdminContact = () => {
   };
 
   const handleReply = () => {
-    console.log('Sending reply:', replyText);
+    // TODO: Implement actual reply functionality
     setReplyText('');
     setSelectedMessage(null);
   };

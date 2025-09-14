@@ -189,15 +189,15 @@ const About = () => {
                 <div className="space-y-6">
                   <h2 className="text-4xl font-bold text-foreground">Our Journey</h2>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    <p className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                    <p className="animate-fade-in-up animation-delay-100">
                       Founded in 1999, AutoDealer started as a small family business with a simple mission: 
                       to provide honest, transparent car buying experience in a friendly environment.
                     </p>
-                    <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                    <p className="animate-fade-in-up animation-delay-200">
                       What began as a modest lot with 20 vehicles has grown into one of the region's 
                       most trusted dealerships, featuring over 500 carefully selected cars, trucks, and SUVs.
                     </p>
-                    <p className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                    <p className="animate-fade-in-up animation-delay-300">
                       Today, we're proud to have served over 50,000 customers, maintaining our commitment 
                       to quality, integrity, and exceptional customer service that started it all.
                     </p>
@@ -229,7 +229,7 @@ const About = () => {
                 {/* Vertical Timeline */}
                 <div className="border-l-2 border-primary/30 ml-4 pl-8 space-y-12">
                   {milestones.map((milestone, index) => (
-                    <div key={index} className="relative animate-fade-in-right" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div key={index} className={`relative animate-fade-in-right animation-delay-${index + 1}00`}>
                       <div className="absolute -left-11 top-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                         <div className="w-4 h-4 bg-white rounded-full"></div>
                       </div>
@@ -366,55 +366,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* Add these CSS animations to your global styles */}
-      <style>{`
-        @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-fade-in-down {
-          animation: fadeInDown 0.8s ease-out forwards;
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .animate-fade-in-right {
-          animation: fadeInRight 0.8s ease-out forwards;
-        }
-        .card-automotive {
-          background: white;
-          border-radius: 1rem;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          transition: all 0.3s ease;
-        }
-      `}</style>
     </div>
   );
 };

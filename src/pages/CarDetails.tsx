@@ -27,7 +27,8 @@ const CarDetails = () => {
   }
 
   const handleAddToCart = () => {
-    console.log(`Added ${car.name} to cart`);
+    // TODO: Implement actual cart functionality
+    // Added ${car.name} to cart
   };
 
   return (

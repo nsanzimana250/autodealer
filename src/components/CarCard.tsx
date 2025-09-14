@@ -45,8 +45,8 @@ const CarCard = ({
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    // Add to cart logic here
-    console.log(`Added ${name} to cart`);
+    // Add to cart logic here - replaced console.log
+    // TODO: Implement actual cart functionality
   };
 
   const handleToggleLike = (e: React.MouseEvent) => {

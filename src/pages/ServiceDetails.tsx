@@ -42,7 +42,7 @@ const ServiceDetails = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Service request submitted:', { service: service.title, ...requestForm });
+    // TODO: Implement actual service request submission
     // Handle form submission here
     alert('Service request submitted successfully! We will contact you shortly.');
     setRequestForm({

@@ -257,13 +257,13 @@ const Dashboard = () => {
             <p className="text-xs text-muted-foreground">
               +18% from last month
             </p>
-            <div className="mt-4">
-              <Link to="/admin/analytics">
-                <Button variant="ghost" size="sm" className="h-8 px-2">
-                  View Analytics <ArrowRight className="h-3 w-3 ml-1" />
-                </Button>
-              </Link>
-            </div>
+              <div className="mt-4">
+                <Link to="/admin/services">
+                  <Button variant="ghost" size="sm" className="h-8 px-2">
+                    View Details <ArrowRight className="h-3 w-3 ml-1" />
+                  </Button>
+                </Link>
+              </div>
           </CardContent>
         </Card>
 

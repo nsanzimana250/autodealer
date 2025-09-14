@@ -42,7 +42,7 @@ const Checkout = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Checkout submitted:', formData);
+    // TODO: Implement actual checkout submission
     // Handle checkout submission
   };
 

@@ -39,7 +39,7 @@ const ServiceManagement = () => {
   });
 
   const handleAddService = () => {
-    console.log('Adding service:', newService);
+    // TODO: Implement actual service addition
     setIsAddDialogOpen(false);
     setNewService({
       title: '',
@@ -59,7 +59,7 @@ const ServiceManagement = () => {
 
   const handleDeleteService = (serviceId: string) => {
     if (confirm('Are you sure you want to delete this service?')) {
-      console.log('Deleting service:', serviceId);
+      // TODO: Implement actual service deletion
     }
   };
 
