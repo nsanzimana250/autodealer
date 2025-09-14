@@ -13,6 +13,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CarCard from '@/components/CarCard';
 import { carsData, categories, brands } from '@/data/cars';
+import { servicesData } from '@/data/services';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = () => {
@@ -38,28 +39,8 @@ const Home = () => {
     { icon: Users, label: 'Happy Clients', value: '30K+' }
   ];
 
-  const services = [
-    {
-      title: 'Car Financing',
-      description: 'Flexible financing options with competitive rates',
-      icon: TrendingUp
-    },
-    {
-      title: 'Vehicle Trade-In',
-      description: 'Get the best value for your current vehicle',
-      icon: CheckCircle
-    },
-    {
-      title: 'Test Drive',
-      description: 'Schedule a test drive at your convenience',
-      icon: Calendar
-    },
-    {
-      title: 'Maintenance',
-      description: 'Professional servicing and maintenance',
-      icon: Shield
-    }
-  ];
+  // Use services data from services.ts
+  const displayServices = servicesData.slice(0, 4); // Show first 4 services
 
   const testimonials = [
     {
@@ -464,30 +445,32 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
+            {displayServices.map((service, index) => (
               <motion.div
-                key={index}
+                key={service.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 group h-full">
-                  <CardContent className="p-6 flex flex-col items-center">
-                    <motion.div 
-                      className="bg-primary/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">{service.description}</p>
-                    <Button variant="link" className="text-primary gap-1 group-hover:gap-2 transition-all">
-                      Learn more <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
+                <Link to={`/services/${service.id}`} className="block">
+                  <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 group h-full cursor-pointer">
+                    <CardContent className="p-6 flex flex-col items-center">
+                      <motion.div 
+                        className="bg-primary/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
+                        <service.icon className="h-8 w-8 text-primary" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                      <p className="text-muted-foreground mb-4 flex-grow">{service.description}</p>
+                      <Button variant="link" className="text-primary gap-1 group-hover:gap-2 transition-all">
+                        Learn more <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
