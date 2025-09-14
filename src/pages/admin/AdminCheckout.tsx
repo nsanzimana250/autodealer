@@ -77,8 +77,8 @@ const AdminCheckout = () => {
       (checkout.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
        checkout.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
        checkout.vehicle.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (selectedStatus === '' || checkout.status === selectedStatus) &&
-      (selectedPaymentMethod === '' || checkout.paymentMethod === selectedPaymentMethod)
+      (selectedStatus === '' || selectedStatus === 'all' || checkout.status === selectedStatus) &&
+      (selectedPaymentMethod === '' || selectedPaymentMethod === 'all' || checkout.paymentMethod === selectedPaymentMethod)
     );
   });
 
@@ -193,7 +193,7 @@ const AdminCheckout = () => {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Status</SelectItem>
+                <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="completed">Completed</SelectItem>
                 <SelectItem value="pending">Pending</SelectItem>
                 <SelectItem value="processing">Processing</SelectItem>
@@ -205,7 +205,7 @@ const AdminCheckout = () => {
                 <SelectValue placeholder="Payment Method" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Methods</SelectItem>
+                <SelectItem value="all">All Methods</SelectItem>
                 <SelectItem value="Credit Card">Credit Card</SelectItem>
                 <SelectItem value="Financing">Financing</SelectItem>
                 <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>

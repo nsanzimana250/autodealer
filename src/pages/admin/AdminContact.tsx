@@ -86,8 +86,8 @@ const AdminContact = () => {
       (message.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
        message.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
        message.message.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (selectedStatus === '' || message.status === selectedStatus) &&
-      (selectedSubject === '' || message.subject === selectedSubject)
+      (selectedStatus === '' || selectedStatus === 'all' || message.status === selectedStatus) &&
+      (selectedSubject === '' || selectedSubject === 'all' || message.subject === selectedSubject)
     );
   });
 
@@ -222,7 +222,7 @@ const AdminContact = () => {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Status</SelectItem>
+                <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="new">New</SelectItem>
                 <SelectItem value="replied">Replied</SelectItem>
                 <SelectItem value="in-progress">In Progress</SelectItem>
@@ -234,7 +234,7 @@ const AdminContact = () => {
                 <SelectValue placeholder="Subject" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Subjects</SelectItem>
+                <SelectItem value="all">All Subjects</SelectItem>
                 <SelectItem value="general">General Inquiry</SelectItem>
                 <SelectItem value="sales">Sales Question</SelectItem>
                 <SelectItem value="service">Service & Support</SelectItem>
