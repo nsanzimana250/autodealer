@@ -1,21 +1,37 @@
-import { useState } from 'react';
-import { User, Settings, ShoppingCart, Heart, MapPin, Phone, Mail, Edit } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { User, Settings, ShoppingCart, Heart, MapPin, Phone, Mail, Edit, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Account = () => {
+  const { user, logout, updateUser } = useAuth();
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
-    address: '123 Main St, City, State 12345'
+    name: user?.name || '',
+    email: user?.email || '',
+    phone: user?.phone || '',
+    address: user?.address || ''
   });
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    setUserInfo({
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      address: user.address
+    });
+  }, [user, navigate]);
 
   const orderHistory = [
     {
@@ -50,9 +66,18 @@ const Account = () => {
   ];
 
   const handleSave = () => {
+    updateUser(userInfo);
     setIsEditing(false);
-    // In a real app, save to backend
   };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  if (!user) {
+    return null; // Will redirect to login
+  }
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -71,9 +96,19 @@ const Account = () => {
     <div className="min-h-screen bg-background py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">My Account</h1>
-          <p className="text-muted-foreground">Manage your profile and view your activity</p>
+        <div className="mb-8 flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Welcome, {user.name}</h1>
+            <p className="text-muted-foreground">Manage your profile and view your activity</p>
+          </div>
+          <Button 
+            variant="outline" 
+            onClick={handleLogout}
+            className="flex items-center gap-2"
+          >
+            <LogOut className="h-4 w-4" />
+            Sign Out
+          </Button>
         </div>
 
         <Tabs defaultValue="profile" className="w-full">

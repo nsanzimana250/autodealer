@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Car, ShoppingCart, Search, Phone, User } from 'lucide-react';
+import { Menu, X, Car, ShoppingCart, Search, Phone, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -105,13 +107,35 @@ const Navbar = () => {
             </div>
 
             {/* User account */}
-            <Link 
-              to="/account" 
-              className="hidden sm:block p-2 text-foreground hover:text-accent transition-colors"
-              aria-label="My Account"
-            >
-              <User className="h-5 w-5" />
-            </Link>
+            {user ? (
+              <div className="hidden sm:flex items-center space-x-2">
+                <Link 
+                  to="/account" 
+                  className="p-2 text-foreground hover:text-accent transition-colors"
+                  aria-label="My Account"
+                >
+                  <User className="h-5 w-5" />
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={logout}
+                  className="text-foreground hover:text-accent transition-colors"
+                  aria-label="Sign Out"
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </div>
+            ) : (
+              <div className="hidden sm:flex items-center space-x-2">
+                <Link to="/login">
+                  <Button variant="ghost" size="sm">Sign In</Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="btn-primary">Sign Up</Button>
+                </Link>
+              </div>
+            )}
 
             {/* Phone contact */}
             <a 
@@ -183,14 +207,46 @@ const Navbar = () => {
                 <Phone className="h-4 w-4 mr-2" />
                 <span>+1 (234) 567-890</span>
               </a>
-              <Link 
-                to="/account" 
-                className="flex items-center px-3 py-2 text-foreground hover:text-accent transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                <User className="h-4 w-4 mr-2" />
-                <span>My Account</span>
-              </Link>
+              {user ? (
+                <>
+                  <Link 
+                    to="/account" 
+                    className="flex items-center px-3 py-2 text-foreground hover:text-accent transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    <span>My Account</span>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsOpen(false);
+                    }}
+                    className="flex items-center px-3 py-2 text-foreground hover:text-accent transition-colors w-full text-left"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    <span>Sign Out</span>
+                  </button>
+                </>
+              ) : (
+                <div className="space-y-2">
+                  <Link 
+                    to="/login"
+                    className="flex items-center px-3 py-2 text-foreground hover:text-accent transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    <span>Sign In</span>
+                  </Link>
+                  <Link 
+                    to="/signup"
+                    className="block px-3 py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Button size="sm" className="btn-primary w-full">Sign Up</Button>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
