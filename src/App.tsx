@@ -19,7 +19,7 @@ import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import CarManagement from "./pages/admin/CarManagement";
-import ContentManagement from "./pages/admin/ContentManagement";
+import BrandsManagement from "./pages/admin/BrandsManagement";
 import ServiceManagement from "./pages/admin/ServiceManagement";
 import AdminContact from "./pages/admin/AdminContact";
 import AdminCheckout from "./pages/admin/AdminCheckout";
@@ -49,7 +49,7 @@ const App = () => (
             <Route index element={<Dashboard />} />
             <Route path="cars" element={<CarManagement />} />
             <Route path="services" element={<ServiceManagement />} />
-            <Route path="content" element={<ContentManagement />} />
+            <Route path="brands" element={<BrandsManagement />} />
             <Route path="contact" element={<AdminContact />} />
             <Route path="checkout" element={<AdminCheckout />} />
             <Route path="settings" element={<Settings />} />

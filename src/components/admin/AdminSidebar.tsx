@@ -11,14 +11,15 @@ import {
   ChevronLeft,
   LogOut,
   MessageCircle,
-  ShoppingCart
+  ShoppingCart,
+  Building2
 } from 'lucide-react';
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
   { icon: Car, label: 'Cars', path: '/admin/cars' },
   { icon: Settings, label: 'Services', path: '/admin/services' },
-  { icon: FileText, label: 'Content', path: '/admin/content' },
+  { icon: Building2, label: 'Brands', path: '/admin/brands' },
   { icon: MessageCircle, label: 'Contact', path: '/admin/contact' },
   { icon: ShoppingCart, label: 'Checkout', path: '/admin/checkout' },
   { icon: Settings, label: 'Settings', path: '/admin/settings' },

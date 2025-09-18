@@ -20,7 +20,8 @@ import {
   Eye,
   ArrowRight,
   Star,
-  MessageSquare
+  MessageSquare,
+  Building2
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
 
@@ -199,10 +200,10 @@ const Dashboard = () => {
                   <span className="text-xs">Services</span>
                 </Button>
               </Link>
-              <Link to="/admin/content">
+              <Link to="/admin/brands">
                 <Button variant="outline" className="w-full h-16 flex flex-col items-center justify-center">
-                  <FileText className="h-5 w-5 mb-1" />
-                  <span className="text-xs">Content</span>
+                  <Building2 className="h-5 w-5 mb-1" />
+                  <span className="text-xs">Brands</span>
                 </Button>
               </Link>
               <Link to="/admin/contact">
@@ -227,7 +228,7 @@ const Dashboard = () => {
                 { action: 'Service request', detail: 'Maintenance appointment', time: '15 minutes ago', icon: Calendar },
                 { action: 'Contact message', detail: 'Sales inquiry from John Smith', time: '1 hour ago', icon: MessageCircle },
                 { action: 'Checkout completed', detail: '$45,230 - Toyota Camry', time: '2 hours ago', icon: CreditCard },
-                { action: 'Content updated', detail: 'About Us page modified', time: '3 hours ago', icon: FileText }
+                { action: 'Brand partnership', detail: 'New Toyota partnership approved', time: '3 hours ago', icon: Building2 }
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted/50">
                   <div className="bg-primary/10 p-2 rounded-full">
